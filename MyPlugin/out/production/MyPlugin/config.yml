@@ -1,0 +1,17 @@
+level_1:
+  sworld:
+    chance: 60
+    result: DIAMOND_SWORD,1
+    require:
+      - IRON_SWORD,1
+      - DIAMOND,1
+  tools:
+    chance: 100
+    result: DIAMOND_AXE,1
+    require:
+      - IRON_AXE,1
+  etc:
+    chance: 30
+    result: WHEAT,1
+    require:
+      - WHEAT_SEEDS,1

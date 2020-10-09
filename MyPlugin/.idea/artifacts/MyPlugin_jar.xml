@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="MyPlugin:jar">
+    <output-path>$USER_HOME$/Desktop/minecraft/plugins</output-path>
+    <root id="archive" name="MyPlugin.jar">
+      <element id="file-copy" path="$PROJECT_DIR$/src/plugin.yml" />
+      <element id="module-output" name="MyPlugin" />
+    </root>
+  </artifact>
+</component>

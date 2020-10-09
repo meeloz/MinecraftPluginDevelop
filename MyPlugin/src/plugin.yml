@@ -1,0 +1,9 @@
+name: MyBukkitPlugin
+main: com.minecraft.plugin.MyBukkitPlugin
+api-version: 1.16
+version: 1.0
+author: meeloz
+commands:
+  cv:
+    description: ps
+    usage: /<command>
