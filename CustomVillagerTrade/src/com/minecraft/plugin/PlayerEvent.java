@@ -22,18 +22,18 @@ import java.util.Random;
 
 public class PlayerEvent implements Listener{
 
-    private final MyBukkitPlugin MyBukkitPlugin;
+    private final CustomVillagerTrade CustomVillagerTrade;
     private YamlConfiguration configuration;
 
 
-    public PlayerEvent(MyBukkitPlugin MyBukkitPlugin){
-        this.MyBukkitPlugin = MyBukkitPlugin;
+    public PlayerEvent(CustomVillagerTrade CustomVillagerTrade){
+        this.CustomVillagerTrade = CustomVillagerTrade;
     }
 
     @EventHandler
     public void VillagerAcquireTradeEvent(VillagerAcquireTradeEvent e) throws IOException {
         Villager v = (Villager)e.getEntity();
-        configuration = YamlConfiguration.loadConfiguration(new File(MyBukkitPlugin.getDataFolder(), "Profession/" + v.getProfession()+".yml"));
+        configuration = YamlConfiguration.loadConfiguration(new File(CustomVillagerTrade.getDataFolder(), "Profession/" + v.getProfession()+".yml"));
 
         String lv = "level_"+v.getVillagerLevel();
         String recipe = rndRecipe(lv);

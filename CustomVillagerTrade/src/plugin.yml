@@ -1,5 +1,5 @@
-name: MyBukkitPlugin
-main: com.minecraft.plugin.MyBukkitPlugin
+name: CustomVillagerTrade
+main: com.minecraft.plugin.CustomVillagerTrade
 api-version: 1.16
 version: 1.0
 author: meeloz

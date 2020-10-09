@@ -1,0 +1,9 @@
+name: CustomVillagerTrade
+main: com.minecraft.plugin.CustomVillagerTrade
+api-version: 1.16
+version: 1.0
+author: meeloz
+commands:
+  cv:
+    description: ps
+    usage: /<command>
