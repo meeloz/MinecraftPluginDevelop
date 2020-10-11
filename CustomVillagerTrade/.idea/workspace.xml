@@ -73,19 +73,6 @@
       <recent name="C:\Users\twole\Documents\GitHub\MinecraftPluginDevelope\CustomVillagerTrade\src" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -98,6 +85,7 @@
       <workItem from="1602363485964" duration="74000" />
       <workItem from="1602368813127" duration="10405000" />
       <workItem from="1602384666704" duration="23000" />
+      <workItem from="1602385368398" duration="170000" />
     </task>
     <servers />
   </component>

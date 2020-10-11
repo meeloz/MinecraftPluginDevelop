@@ -1,12 +1,9 @@
 package com.minecraft.plugin;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class VillagerRecipe{
@@ -33,7 +30,7 @@ public class VillagerRecipe{
         return profession.getRecipe().get(level).get(rnd);
     }
 
-
+    //取得配方结果
     public ItemStack getResult(){
         String result = profession.getFile().getString(level+"."+Recipe+"."+".Result");
         int cutindex = result.indexOf(",");
@@ -42,8 +39,8 @@ public class VillagerRecipe{
         return new ItemStack(Material.getMaterial(item),Integer.parseInt(amount));
     }
 
+    ////取得配方需求
     public ArrayList<ItemStack> getReq() {
-        //取得物品List並轉成陣列,List打印後: [IRON_SWORD,1,DIAMOND,1]
         ArrayList<ItemStack> req = new ArrayList<>();
         Object[] section = profession.getFile().getStringList(level + "." + Recipe + "." + ".Require").toArray();
         for (Object key : section) {
