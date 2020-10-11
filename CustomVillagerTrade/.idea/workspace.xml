@@ -30,6 +30,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -50,8 +57,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/plugin.yml" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -59,19 +72,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\twole\Documents\GitHub\MinecraftPluginDevelope\CustomVillagerTrade\src" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -81,7 +81,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602286864066</updated>
-      <workItem from="1602286866174" duration="777000" />
+      <workItem from="1602286866174" duration="27228000" />
+      <workItem from="1602363485964" duration="74000" />
+      <workItem from="1602368813127" duration="10405000" />
     </task>
     <servers />
   </component>
@@ -98,15 +100,32 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="570" y="253" key="FileChooserDialogImpl" timestamp="1602287029718">
+    <state x="592" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602362451963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="570" y="253" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602287029718" />
-    <state x="360" y="87" key="SettingsEditor" timestamp="1602287648981">
+    <state x="592" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602362451963" />
+    <state x="745" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1602352766479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="360" y="87" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602287648981" />
+    <state x="745" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602352766479" />
+    <state x="673" y="268" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1602380325834">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="673" y="268" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602380325834" />
+    <state x="570" y="253" key="FileChooserDialogImpl" timestamp="1602363167956">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="570" y="253" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602363167956" />
+    <state x="360" y="87" key="SettingsEditor" timestamp="1602362421690">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="360" y="87" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602362421690" />
+    <state x="697" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1602381396563">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="697" y="228" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602381396563" />
   </component>
 </project>
