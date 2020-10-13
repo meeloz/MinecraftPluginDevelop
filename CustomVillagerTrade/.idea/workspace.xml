@@ -67,11 +67,27 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\twole\Documents\GitHub\MinecraftPluginDevelope\CustomVillagerTrade\src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -86,6 +102,13 @@
       <workItem from="1602368813127" duration="10405000" />
       <workItem from="1602384666704" duration="23000" />
       <workItem from="1602385368398" duration="170000" />
+      <workItem from="1602387026682" duration="441000" />
+      <workItem from="1602388075285" duration="2662000" />
+      <workItem from="1602430366511" duration="9000" />
+      <workItem from="1602485881977" duration="4277000" />
+      <workItem from="1602510698903" duration="16000" />
+      <workItem from="1602530434079" duration="7523000" />
+      <workItem from="1602568939113" duration="4129000" />
     </task>
     <servers />
   </component>
@@ -113,18 +136,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="745" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602352766479" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602564379083">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602564379083" />
     <state x="673" y="268" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1602380325834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="673" y="268" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602380325834" />
-    <state x="570" y="253" key="FileChooserDialogImpl" timestamp="1602363167956">
+    <state x="570" y="253" key="FileChooserDialogImpl" timestamp="1602510711753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="570" y="253" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602363167956" />
-    <state x="360" y="87" key="SettingsEditor" timestamp="1602362421690">
+    <state x="570" y="253" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602510711753" />
+    <state x="360" y="87" key="SettingsEditor" timestamp="1602504451978">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="360" y="87" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602362421690" />
+    <state x="360" y="87" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602504451978" />
     <state x="697" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1602381396563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
