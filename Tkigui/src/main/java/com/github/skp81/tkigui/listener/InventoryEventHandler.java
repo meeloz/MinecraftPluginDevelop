@@ -41,13 +41,13 @@ public class InventoryEventHandler implements Listener {
                     items.add(e.getInventory().getItem(i));
                 }
             }
+
             if(!items.isEmpty()){
                 String key = e.getInventory().getItem(8).getItemMeta().getLore().get(1);
                 guiManager.onButton((Player) e.getWhoClicked(),key,items);
-                e.getWhoClicked().sendMessage("§aShowcase has been created!");
                 return;
             }
-            e.getWhoClicked().sendMessage("§cYou must put at least an item!");
+            e.getWhoClicked().sendMessage("§6[§3Tkigui§6] §cYou must put at least an item!");
         }
     }
 
@@ -59,7 +59,7 @@ public class InventoryEventHandler implements Listener {
             e.setCancelled(true);
             String key = e.getInventory().getItem(8).getItemMeta().getLore().get(1);
             if(guiManager.getShowcases().get(key) == null){
-                e.getWhoClicked().sendMessage("§cYou didn't set any showcase here.");
+                e.getWhoClicked().sendMessage("§6[§3Tkigui§6] §cYou didn't set any showcase here.");
                 return;
             }
             UUID uuid = guiManager.getShowcases().get(key).getHost();
@@ -67,26 +67,39 @@ public class InventoryEventHandler implements Listener {
             guiManager.getShowcases().remove(key);
             dataManager.deleteFile(key);
             e.getView().close();
-            e.getWhoClicked().sendMessage("§dSuccess delete showcase!");
+            e.getWhoClicked().sendMessage("§6[§3Tkigui§6] §dSuccess delete showcase!");
         }
     }
 
     @EventHandler
-    public void onClose(InventoryCloseEvent e) {
+    public void onClose(InventoryCloseEvent e) throws IOException, InvalidConfigurationException {
         if(!e.getView().getTitle().equals("§r§b[CustomDisplayGUI]"))
             return;
         String key = e.getInventory().getItem(8).getItemMeta().getLore().get(1);
         List<ItemStack> items = new ArrayList<>();
-        if(guiManager.getShowcases().get(key) == null){
-            for(int i=0;i < 7;i++){
-                if(e.getInventory().getItem(i) != null){
-                    items.add(e.getInventory().getItem(i));
-                }
+        for(int i=0;i < 7;i++){
+            if(e.getInventory().getItem(i) != null){
+                items.add(e.getInventory().getItem(i));
             }
+        }
+        if(guiManager.getShowcases().get(key) == null){
             if(!items.isEmpty()){
                 for(ItemStack item:items){
                     e.getPlayer().getInventory().addItem(item);
                 }
+            }
+        }else{
+            if(!items.isEmpty()){
+                guiManager.getShowcases().get(key).getItems().clear();
+                guiManager.getShowcases().get(key).getItems().addAll(items);
+                TkiguiPlugin.getInstance().getDataManager().writeFile(key);
+            }else{
+                UUID uuid = guiManager.getShowcases().get(key).getHost();
+                Bukkit.getEntity(uuid).remove();
+                guiManager.getShowcases().remove(key);
+                dataManager.deleteFile(key);
+                e.getView().close();
+                e.getPlayer().sendMessage("§6[§3Tkigui§6] §dSuccess delete showcase!");
             }
         }
     }

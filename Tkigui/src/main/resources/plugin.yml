@@ -1,8 +1,15 @@
 name: Tkigui
 version: 1.0
 main: com.github.skp81.tkigui.TkiguiPlugin
-api-version: 1.16
+api-version: 1.13
 commands:
   tki:
     description: Your description
-    usage: /<command>
+    usage: /tki
+permissions:
+  tkigui.command:
+    description: Your description
+    default: op
+  tkigui.create:
+    description: Your description
+    default: op

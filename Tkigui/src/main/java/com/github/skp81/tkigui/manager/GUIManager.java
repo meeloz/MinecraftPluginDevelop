@@ -4,13 +4,11 @@ import com.github.skp81.tkigui.TkiguiPlugin;
 import com.github.skp81.tkigui.data.ShowcaseData;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.io.IOException;
@@ -35,9 +33,9 @@ public class GUIManager {
             dropitem.setVelocity(new Vector());
             ShowcaseData data = new ShowcaseData(dropitem.getUniqueId(),loc,items);
             showcases.put(key,data);
+            player.sendMessage("§6[§3Tkigui§6] §aShowcase has been created!");
         }else{
-            showcases.get(key).getItems().clear();
-            showcases.get(key).getItems().addAll(items);
+            player.sendMessage("§6[§3Tkigui§6] §cYou already create a showcase.");
         }
         TkiguiPlugin.getInstance().getDataManager().writeFile(key);
     }
@@ -52,14 +50,26 @@ public class GUIManager {
     }
 
     public void showItem(){
-        new BukkitRunnable(){
-            @Override
-            public void run(){
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable() {
+            public void run() {
                 Set<String> keys = showcases.keySet();
                 if(!keys.isEmpty()) {
                     for (String key : keys) {
                         List<ItemStack> items = showcases.get(key).getItems();
                         Item item = (Item) Bukkit.getEntity(showcases.get(key).getHost());
+                        if(item == null){
+                            Location loc = showcases.get(key).getLocation();
+                            item = loc.getWorld().dropItem(loc.clone().add(0.5,1.2,0.5),items.get(0));
+                            item.setVelocity(new Vector());
+                            showcases.get(key).setHost(item.getUniqueId());
+                            try {
+                                dataManager.writeFile(key);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (InvalidConfigurationException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         int rnd = new Random().nextInt(items.size());
                         if(!items.isEmpty()){
                             item.setItemStack(items.get(rnd));
@@ -67,7 +77,7 @@ public class GUIManager {
                     }
                 }
             }
-        }.runTaskTimerAsynchronously(TkiguiPlugin.getInstance(),100L,100L);
+        }, 100L,100L);
     }
 
     public HashMap<String, ShowcaseData> getShowcases(){

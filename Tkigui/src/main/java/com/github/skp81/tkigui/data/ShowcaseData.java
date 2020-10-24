@@ -17,6 +17,10 @@ public class ShowcaseData {
         this.items = items;
     }
 
+    public void setHost(UUID host) {
+        this.host = host;
+    }
+
     public UUID getHost() {
         return host;
     }
