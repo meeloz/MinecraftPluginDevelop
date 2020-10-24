@@ -16,9 +16,11 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 public class BlockClickHandler implements Listener {
+    private TkiguiPlugin instance;
     private final GUIManager guiManager;
 
     public BlockClickHandler(){
+        instance = TkiguiPlugin.getInstance();
         guiManager = TkiguiPlugin.getInstance().getGUIManager();
     }
 
@@ -29,13 +31,13 @@ public class BlockClickHandler implements Listener {
             return;
         if(!e.getHand().equals(EquipmentSlot.HAND))
             return;
-        if(!e.getClickedBlock().getType().equals(Material.RED_NETHER_BRICK_SLAB))
+        if(!e.getClickedBlock().getType().equals(Material.getMaterial(instance.getConfig().getString("Interactive-Block"))))
             return;
         if(!e.getPlayer().hasPermission("tkigui.create")){
-            e.getPlayer().sendMessage("§6[§3Tkigui§6] §cYou don't have the permission");
+            e.getPlayer().sendMessage(TkiguiPlugin.getInstance().getConfig().getString("Message.PermissionMessage"));
             return;
         }
-        if(e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.STICK)){
+        if(e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.getMaterial(instance.getConfig().getString("Interactive-Item")))){
             Block block = e.getClickedBlock();
             GUI gui = new GUI(block,guiManager);
             Inventory menu = gui.getMenu();

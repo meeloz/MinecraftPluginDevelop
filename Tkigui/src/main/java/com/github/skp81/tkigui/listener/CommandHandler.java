@@ -26,20 +26,28 @@ public class CommandHandler implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if(!player.hasPermission("tkigui.command")){
-                player.sendMessage("§6[§3Tkigui§6] §cYou don't have the permission");
+                player.sendMessage(instance.getConfig().getString("Message.PermissionMessage"));
+                return false;
+            }
+            if (args[0].equals("reload")) {
+                instance.reloadConfig();
+                player.sendMessage(instance.getConfig().getString("Message.ReloadMessage"));
                 return true;
             }
-            Set<String> keys = guiManager.getShowcases().keySet();
-            player.sendMessage("§6[§3Tkigui§6] §6You have set "+keys.size()+" showcases.");
-            for(String key:keys){
-                Location loc = guiManager.getShowcases().get(key).getLocation();
-                TextComponent tp = new TextComponent();
-                tp.setText(String.format("§6[§3Tkigui§6] §e[%d,%d,%d] §8- §l§2[Click]",loc.getBlockX(),loc.getBlockY(),loc.getBlockZ()));
-                tp.setColor(ChatColor.GREEN);
-                tp.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,String.format("/tp %d %d %d",loc.getBlockX(),loc.getBlockY(),loc.getBlockZ())));
-                player.spigot().sendMessage(tp);
+            if (args[0].equals("list")) {
+                Set<String> keys = guiManager.getShowcases().keySet();
+                player.sendMessage(String.format(instance.getConfig().getString("Message.ListMessage"),keys.size()));
+                for(String key:keys){
+                    Location loc = guiManager.getShowcases().get(key).getLocation();
+                    TextComponent tp = new TextComponent();
+                    tp.setText(String.format("§6[§3Location§6] §e[%d,%d,%d] §8- §l§2[Click]",loc.getBlockX(),loc.getBlockY(),loc.getBlockZ()));
+                    tp.setColor(ChatColor.GREEN);
+                    tp.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,String.format("/tp %d %d %d",loc.getBlockX(),loc.getBlockY(),loc.getBlockZ())));
+                    player.spigot().sendMessage(tp);
+                }
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }

@@ -1,0 +1,23 @@
+#The item that you want to create showcase with.
+Interactive-Item: STICK
+
+#The block that you want to create showcase with.
+Interactive-Block: RED_NETHER_BRICK_SLAB
+
+#Item show interval. ##You need restart server to reload it.##
+Show-Interval: 5
+
+#Inventory title.
+Inventory-Title: "§6[§3Tkigui§6]"
+
+#Message Setting
+Message:
+    InventoryNullMessage: "§6[§3Tkigui§6] §cYou must put at least an item!"
+    ShowcaseCreateMessage: "§6[§3Tkigui§6] §aShowcase has been created!"
+    ShowcaseCreatedMessage: "§6[§3Tkigui§6] §cYou already create a showcase."
+    ShowcaseNullMessage: "§6[§3Tkigui§6] §cYou didn't set any showcase here."
+    ShowcaseDeleteMessage: "§6[§3Tkigui§6] §dSuccess delete showcase!"
+    ReloadMessage: "§6[§3Tkigui§6] §aReloaded config file!"
+    ListMessage: "§6[§3Tkigui§6] §6You have set %d showcases."
+    PermissionMessage: "§6[§3Tkigui§6] §cYou don't have the permission"
+    DebugMessage: "§6[§3Tkigui§6] §cYou cannot do this."

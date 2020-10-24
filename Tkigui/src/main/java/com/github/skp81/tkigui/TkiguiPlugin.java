@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.io.IOException;
 
 public class TkiguiPlugin extends JavaPlugin {
@@ -32,6 +33,17 @@ public class TkiguiPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
+        File file = new File(getDataFolder(),"config.yml");
+        File dir = getDataFolder();
+        if(!dir.exists())
+            dir.mkdir();
+        if(!file.exists()){
+            saveResource("config.yml",true);
+        }else{
+            reloadConfig();
+        }
+
         try {
             dataManager = new DataManager();
             guiManager = new GUIManager();
@@ -39,7 +51,6 @@ public class TkiguiPlugin extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
-        saveConfig();
         Bukkit.getPluginManager().registerEvents(new BlockClickHandler(),this);
         Bukkit.getPluginManager().registerEvents(new InventoryEventHandler(),this);
         Bukkit.getPluginManager().registerEvents(new ItemBreakHandler(),this);

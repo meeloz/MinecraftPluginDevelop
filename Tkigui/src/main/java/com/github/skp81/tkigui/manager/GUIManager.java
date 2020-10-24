@@ -38,9 +38,9 @@ public class GUIManager {
             //建立展示架资料
             ShowcaseData data = new ShowcaseData(dropitem.getUniqueId(),loc,items);
             showcases.put(key,data);
-            player.sendMessage("§6[§3Tkigui§6] §aShowcase has been created!");
+            player.sendMessage(instance.getConfig().getString("Message.ShowcaseCreateMessage"));
         }else{
-            player.sendMessage("§6[§3Tkigui§6] §cYou already create a showcase.");
+            player.sendMessage(instance.getConfig().getString("Message.ShowcaseCreatedMessage"));
         }
         //将展示架的资料保存到data.yml
         TkiguiPlugin.getInstance().getDataManager().writeFile(key);
@@ -58,35 +58,34 @@ public class GUIManager {
 
     //定时更换如果掉的内容,GUIManager实例化时启动
     public void showItem(){
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable() {
-            public void run() {
-                Set<String> keys = showcases.keySet();
-                if(!keys.isEmpty()) {
-                    for (String key : keys) {
-                        List<ItemStack> items = showcases.get(key).getItems();
-                        Item item = (Item) Bukkit.getEntity(showcases.get(key).getHost());
-                        //如果展示品(掉落物)遗失,重新生成掉落物并更新展示架.data.yml的内容
-                        if(item == null){
-                            Location loc = showcases.get(key).getLocation();
-                            item = loc.getWorld().dropItem(loc.clone().add(0.5,1.2,0.5),items.get(0));
-                            item.setVelocity(new Vector());
-                            showcases.get(key).setHost(item.getUniqueId());
-                            try {
-                                dataManager.writeFile(key);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (InvalidConfigurationException e) {
-                                e.printStackTrace();
-                            }
+        long interval = instance.getConfig().getInt("Show-Interval");
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, () -> {
+            Set<String> keys = showcases.keySet();
+            if(!keys.isEmpty()) {
+                for (String key : keys) {
+                    List<ItemStack> items = showcases.get(key).getItems();
+                    Item item = (Item) Bukkit.getEntity(showcases.get(key).getHost());
+                    //如果展示品(掉落物)遗失,重新生成掉落物并更新展示架.data.yml的内容
+                    if(item == null){
+                        Location loc = showcases.get(key).getLocation();
+                        item = loc.getWorld().dropItem(loc.clone().add(0.5,1.2,0.5),items.get(0));
+                        item.setVelocity(new Vector());
+                        showcases.get(key).setHost(item.getUniqueId());
+                        try {
+                            dataManager.writeFile(key);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (InvalidConfigurationException e) {
+                            e.printStackTrace();
                         }
-                        int rnd = new Random().nextInt(items.size());
-                        if(!items.isEmpty()){
-                            item.setItemStack(items.get(rnd));
-                        }
+                    }
+                    int rnd = new Random().nextInt(items.size());
+                    if(!items.isEmpty()){
+                        item.setItemStack(items.get(rnd));
                     }
                 }
             }
-        }, 100L,100L);
+        }, 100L,interval*20);
     }
 
     public HashMap<String, ShowcaseData> getShowcases(){

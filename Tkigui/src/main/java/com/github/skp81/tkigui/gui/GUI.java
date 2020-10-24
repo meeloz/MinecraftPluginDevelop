@@ -1,5 +1,6 @@
 package com.github.skp81.tkigui.gui;
 
+import com.github.skp81.tkigui.TkiguiPlugin;
 import com.github.skp81.tkigui.manager.GUIManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,7 +30,7 @@ public class GUI {
     }
 
     public Inventory CreateInventory() {
-        String title = "§r§b[CustomDisplayGUI]";
+        String title = TkiguiPlugin.getInstance().getConfig().getString("Inventory-Title");
         int size = 9;
         return Bukkit.createInventory(null, size, title);
     }

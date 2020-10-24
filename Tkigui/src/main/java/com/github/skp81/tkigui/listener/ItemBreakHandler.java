@@ -21,9 +21,11 @@ import java.util.List;
 import java.util.Set;
 
 public class ItemBreakHandler implements Listener {
+    private TkiguiPlugin instance;
     private final GUIManager guiManager;
 
     public ItemBreakHandler() {
+        instance = TkiguiPlugin.getInstance();
         guiManager = TkiguiPlugin.getInstance().getGUIManager();
     }
 
@@ -35,7 +37,7 @@ public class ItemBreakHandler implements Listener {
         for(String key:keys){
             if(e.getBlockPlaced().getLocation().equals(guiManager.getLocation(key))){
                 e.setCancelled(true);
-                e.getPlayer().sendMessage("§6[§3Tkigui§6] §cYou cannot do this.");
+                e.getPlayer().sendMessage(instance.getConfig().getString("Message.DebugMessage"));
                 return;
             }
         }
@@ -47,7 +49,7 @@ public class ItemBreakHandler implements Listener {
         for(String key:keys){
             if(e.getBlock().getLocation().equals(guiManager.getLocation(key))){
                 e.setCancelled(true);
-                e.getPlayer().sendMessage("§6[§3Tkigui§6] §cYou cannot do this.");
+                e.getPlayer().sendMessage(instance.getConfig().getString("Message.DebugMessage"));
                 return;
             }
         }

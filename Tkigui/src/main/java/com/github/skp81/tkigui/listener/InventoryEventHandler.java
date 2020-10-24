@@ -18,17 +18,19 @@ import java.util.List;
 import java.util.UUID;
 
 public class InventoryEventHandler implements Listener {
+    private TkiguiPlugin instance;
     private final GUIManager guiManager;
     private final DataManager dataManager;
 
     public InventoryEventHandler() {
+        instance = TkiguiPlugin.getInstance();
         guiManager = TkiguiPlugin.getInstance().getGUIManager();
         dataManager = TkiguiPlugin.getInstance().getDataManager();
     }
 
     @EventHandler
     public void onCreate(InventoryClickEvent e) throws IOException, InvalidConfigurationException {
-        if(!e.getView().getTitle().equals("§r§b[CustomDisplayGUI]"))
+        if(!e.getView().getTitle().equals(instance.getConfig().getString("Inventory-Title")))
             return;
         if(e.getRawSlot() == 8){
             e.setCancelled(true);
@@ -47,14 +49,14 @@ public class InventoryEventHandler implements Listener {
                 guiManager.onButton((Player) e.getWhoClicked(),key,items);
                 return;
             }
-            e.getWhoClicked().sendMessage("§6[§3Tkigui§6] §cYou must put at least an item!");
+            e.getWhoClicked().sendMessage(instance.getConfig().getString("Message.InventoryNullMessage"));
             return;
         }
     }
 
     @EventHandler
     public void onDelete(InventoryClickEvent e) throws IOException, InvalidConfigurationException {
-        if(!e.getView().getTitle().equals("§r§b[CustomDisplayGUI]"))
+        if(!e.getView().getTitle().equals(instance.getConfig().getString("Inventory-Title")))
             return;
         if(e.getRawSlot() == 7){
             e.setCancelled(true);
@@ -62,7 +64,7 @@ public class InventoryEventHandler implements Listener {
             //检查是否有展示架可以删除
             String key = e.getInventory().getItem(8).getItemMeta().getLore().get(1);
             if(guiManager.getShowcases().get(key) == null){
-                e.getWhoClicked().sendMessage("§6[§3Tkigui§6] §cYou didn't set any showcase here.");
+                e.getWhoClicked().sendMessage(instance.getConfig().getString("Message.ShowcaseNullMessage"));
                 return;
             }
 
@@ -72,13 +74,13 @@ public class InventoryEventHandler implements Listener {
             guiManager.getShowcases().remove(key);
             dataManager.deleteFile(key);
             e.getView().close();
-            e.getWhoClicked().sendMessage("§6[§3Tkigui§6] §dSuccess delete showcase!");
+            e.getWhoClicked().sendMessage(instance.getConfig().getString("Message.ShowcaseDeleteMessage"));
         }
     }
 
     @EventHandler
     public void onClose(InventoryCloseEvent e) throws IOException, InvalidConfigurationException {
-        if(!e.getView().getTitle().equals("§r§b[CustomDisplayGUI]"))
+        if(!e.getView().getTitle().equals(instance.getConfig().getString("Inventory-Title")))
             return;
 
         //获取容器内前7格的物品内容(后面2格是按钮)
@@ -110,7 +112,7 @@ public class InventoryEventHandler implements Listener {
                 guiManager.getShowcases().remove(key);
                 dataManager.deleteFile(key);
                 e.getView().close();
-                e.getPlayer().sendMessage("§6[§3Tkigui§6] §dSuccess delete showcase!");
+                e.getPlayer().sendMessage(instance.getConfig().getString("Message.ShowcaseDeleteMessage"));
             }
         }
     }
