@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-//create menu and button
+//create gui and button
 public class GUI {
 
     private final Inventory menu;
@@ -26,11 +26,6 @@ public class GUI {
         ItemStack buttons = CreateButtons();
         menu.setItem(8,button);
         menu.setItem(7,buttons);
-        if(guiManager.getShowcases().get(name) != null){
-            List<ItemStack> items = guiManager.getShowcases().get(name).getItems();
-            for(int i = 0;i < items.size();i++)
-                menu.setItem(i,items.get(i));
-        }
     }
 
     public Inventory CreateInventory() {

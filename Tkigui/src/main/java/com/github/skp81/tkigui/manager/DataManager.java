@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+//将ShowcaseData的内容保存至data.yml
 public class DataManager {
     private final TkiguiPlugin instance;
     private final YamlConfiguration config = new YamlConfiguration();
@@ -33,12 +34,6 @@ public class DataManager {
         config.set(key+".Host",data.getHost().toString());
         config.set(key+".Location",data.getLocation());
         config.set(key+".Items",data.getItems());
-        config.save(file);
-    }
-
-    public void updateFile(String key) throws IOException, InvalidConfigurationException {
-        config.load(file);
-        config.set(key+".Items",TkiguiPlugin.getInstance().getGUIManager().getShowcases().get(key).getItems());
         config.save(file);
     }
 

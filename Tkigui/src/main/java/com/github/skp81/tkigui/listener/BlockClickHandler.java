@@ -8,14 +8,12 @@ import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
-import java.util.Set;
 
 public class BlockClickHandler implements Listener {
     private final GUIManager guiManager;
@@ -41,68 +39,15 @@ public class BlockClickHandler implements Listener {
             Block block = e.getClickedBlock();
             GUI gui = new GUI(block,guiManager);
             Inventory menu = gui.getMenu();
+
+            //如果已经创建过展示架,把展示架的内容放进容器内
+            String key = menu.getItem(8).getItemMeta().getLore().get(1);
+            if(guiManager.getShowcases().get(key) != null){
+                List<ItemStack> items = guiManager.getShowcases().get(key).getItems();
+                for(int i = 0;i < items.size();i++)
+                    menu.setItem(i,items.get(i));
+            }
             e.getPlayer().openInventory(menu);
-        }
-    }
-
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent e){
-        Set<String> keys = guiManager.getShowcases().keySet();
-        for(String key:keys){
-            if(e.getBlockPlaced().getLocation().equals(guiManager.getLocation(key))){
-                e.setCancelled(true);
-                e.getPlayer().sendMessage("§6[§3Tkigui§6] §cYou cannot do this.");
-                return;
-            }
-        }
-    }
-
-    @EventHandler
-    public void onBlockBreak(BlockBreakEvent e){
-        Set<String> keys = guiManager.getShowcases().keySet();
-        for(String key:keys){
-            if(e.getBlock().getLocation().equals(guiManager.getLocation(key))){
-                e.setCancelled(true);
-                e.getPlayer().sendMessage("§6[§3Tkigui§6] §cYou cannot do this.");
-                return;
-            }
-        }
-    }
-
-    @EventHandler
-    public void onEntityExplode(EntityExplodeEvent e){
-        List<Block> blocks = e.blockList();
-        Set<String> keys = guiManager.getShowcases().keySet();
-        for(Block block:blocks){
-            for(String key:keys){
-                if(block.getLocation().equals(guiManager.getShowcases().get(key).getLocation())){
-                    e.blockList().clear();
-                    e.setCancelled(true);
-                    return;
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void onBlockPhysics(BlockPhysicsEvent e){
-        Set<String> keys = guiManager.getShowcases().keySet();
-        for(String key:keys){
-            if(e.getBlock().getLocation().equals(guiManager.getShowcases().get(key).getLocation())){
-                e.setCancelled(true);
-                return;
-            }
-        }
-    }
-
-    @EventHandler
-    public void onBucketEmpty(PlayerBucketEmptyEvent e){
-        Set<String> keys = guiManager.getShowcases().keySet();
-        for(String key:keys){
-            if(e.getBlockClicked().getLocation().equals(guiManager.getShowcases().get(key).getLocation())){
-                e.setCancelled(true);
-                return;
-            }
         }
     }
 }
